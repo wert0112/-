@@ -1,8 +1,5 @@
 import java.util.Scanner;
 
-import static java.util.Scanner.*;
-import java.util.Scanner;
-
 public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -17,9 +14,9 @@ public class Main {
         String operand1 = parts[0].replaceAll("\"", "");
         String operator = parts[1];
         String operand2 = parts[2].replaceAll("\"", "");
-        if (!operand1.matches("[a-zA-Z]+")) { throw new IllegalArgumentException("Первый элемент не  должен быть числом ");}
+        if (operand1.matches("[-+]?\\d+")) { throw new IllegalArgumentException("Первый элемент не  должен быть числом ");}
 
-        if (!operand2.matches("[1-9]|10")) {
+        if (!operand2.matches("[1-9]|10") && !operand2.matches("[a-z A-z]+")) {
             throw new IllegalArgumentException("Числа должны быть от 1 до 10");
         }
 
@@ -64,3 +61,4 @@ public class Main {
         System.out.println(": \"" + result + "\"");
     }
 }
+
