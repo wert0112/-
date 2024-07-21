@@ -11,14 +11,23 @@ public class Main {
         String[] parts = input.split(" ");
 
         if (parts.length != 3) {
-            throw new IllegalArgumentException("Invalid input format");
+            throw new IllegalArgumentException("Неверный формат ввода");
         }
 
         String operand1 = parts[0].replaceAll("\"", "");
         String operator = parts[1];
         String operand2 = parts[2].replaceAll("\"", "");
         if (!operand1.matches("[a-zA-Z]+")) { throw new IllegalArgumentException("Первый элемент не  должен быть числом ");}
-        String result = "";
+
+        if (!operand2.matches("[1-9]|10")) {
+            throw new IllegalArgumentException("Числа должны быть от 1 до 10");
+        }
+
+        if (operand1.length() > 10 || operand2.length() > 10) {
+            throw new IllegalArgumentException("Строки должны быть длиной не более 10 символов");
+        }
+
+        String result = " ";
 
         switch (operator) {
             case "+":
