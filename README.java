@@ -26,18 +26,19 @@ public class Main {
                 throw new IllegalArgumentException("Неверный формат ввода");
             }
 
-            String operand1 = parts[0].replaceAll("\"", "");
+            String operand1 = parts[0];
             String operator = parts[1];
-            String operand2 = parts[2].replaceAll("\"", "");
+            String operand2 = parts[2];
             if (operand1.matches("[-+]?\\d+") && !operand2.matches("[-+]?\\d+")) {
                 throw new IllegalArgumentException("Первый элемент не  должен быть числом ");
             }
 
-            if (!operand2.matches("[1-9]|10") && operand2.matches("[-+]&\\d")) {
+            if (!operand2.matches("10|[1-9]") && operand2.matches("[-+]?\\d+")) {
                 throw new IllegalArgumentException("Числа должны быть от 1 до 10");
             }
-
-            if (operand1.length() > 10 || operand2.length() > 10) {
+operand1= operand1.replaceAll("\"", "");
+        operand2= operand2.replaceAll("\"", "");
+        if (operand1.length() > 10 || operand2.length() > 10) {
                 throw new IllegalArgumentException("Строки должны быть длиной не более 10 символов");
             }
 
